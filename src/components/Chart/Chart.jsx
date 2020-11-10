@@ -12,16 +12,15 @@ const Chart = () => {
         const fetchAPI = async () => {
             setDailyData(await fetchDailyData());
         }
-
         fetchAPI();
-    });
+    }, []);
  
     const lineChart = (
         dailyData.length
         ? (
             <Line
                 data={{
-                    labels: dailyData.map(({ date }) => date),
+                    labels: dailyData.map(({ data }) => data),
                     datasets: [
                         {
                             data: dailyData.map(({ confirmed}) => confirmed),
